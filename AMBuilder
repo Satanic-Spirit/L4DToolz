@@ -1,0 +1,40 @@
+# vim: set sts=2 ts=8 sw=2 tw=99 et ft=python:
+import os, sys
+
+projectName = 'l4dtoolz'
+
+# smsdk_ext.cpp will be automatically added later
+sourceFiles = [
+  'l4dtoolz_mm.cpp',
+  'signature.cpp',
+  os.path.join(Extension.sm_root, 'public', 'asm', 'asm.c')
+]
+
+detour_games = ['l4d', 'l4d2', 'nucleardawn']
+
+###############
+# Make sure to edit PackageScript, which copies your files to their appropriate locations
+# Simple extensions do not need to modify past this point.
+
+project = Extension.HL2Project(builder, projectName)
+
+#if os.path.isfile(os.path.join(builder.currentSourcePath, 'sdk', 'smsdk_ext.cpp')):
+#  # Use the copy included in the project
+#  project.sources += [os.path.join('sdk', 'smsdk_ext.cpp')]
+#else:
+#  # Use the copy included with SM 1.6 and newer
+#  project.sources += [os.path.join(Extension.sm_root, 'public', 'smsdk_ext.cpp')]
+
+project.sources += sourceFiles
+  
+for sdk_name in Extension.sdks:
+  if sdk_name == 'episode1':
+    continue
+  sdk = Extension.sdks[sdk_name]
+
+  binary = Extension.HL2Config(project, projectName + sdk.ext, sdk)
+
+#  if builder.target_platform == 'linux' or sdk_name in detour_games:
+#    binary.sources += [os.path.join(Extension.sm_root, 'public', 'CDetour', 'detours.cpp')]
+
+Extension.extensions = builder.Add(project)

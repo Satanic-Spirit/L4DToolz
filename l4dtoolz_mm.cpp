@@ -44,10 +44,10 @@ void l4dtoolz::OnChangeMaxplayers ( IConVar *var, const char *pOldValue, float f
 #ifdef L4D1
 			max_players_new[4] = friends_lobby_new[3] = server_bplayers_new[3] = new_value;
 #else
-			max_players_new[4] = server_bplayers_new[3] = (unsigned char)new_value;
+			max_players_new[4] = server_bplayers_new[3] = new_value;
 #endif
 			if(lobby_match_ptr) {
-				lobby_match_new[2] = (unsigned char)new_value;
+				lobby_match_new[2] = new_value;
 				write_signature(lobby_match_ptr, lobby_match_new);
 			} else {
 				Msg("sv_maxplayers MS init error\n");
@@ -210,7 +210,7 @@ bool l4dtoolz::Load(PluginId id, ISmmAPI *ismm, char *error, size_t maxlen, bool
 				write_signature(tmp_player, players_new);
 				get_original_signature(tmp_player2, players_new2, players_org2);
 				write_signature(tmp_player2, players_new2);
-				engine->ServerCommand("maxplayers 32\n");
+				engine->ServerCommand("maxplayers 16\n");
 				engine->ServerCommand("L4DToolZ ivailosp@abv.bg\n");
 			}
 		}
@@ -297,7 +297,7 @@ const char *l4dtoolz::GetVersion()
 #ifdef __GIT_VERSION
 	return __GIT_VERSION;
 #else
-	return "1.0.0.9r1";
+	return "1.0.0.9h-unknown";
 #endif
 }
 
