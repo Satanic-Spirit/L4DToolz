@@ -1,5 +1,7 @@
 # L4DToolz by ivailosp
 
+https://forums.alliedmods.net/showthread.php?t=93600
+
 Metamod plugin to unlock the max player limit on L4D and L4D2.
 
 # CVARS
