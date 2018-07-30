@@ -11,12 +11,12 @@ sourceFiles = [
 ]
 
 libudis86Files = [
-	os.path.join(Extension.sm_root, 'public', 'libudis86', 'decode.c'),
-	os.path.join(Extension.sm_root, 'public', 'libudis86', 'itab.c'),
-	os.path.join(Extension.sm_root, 'public', 'libudis86', 'syn-att.c'),
-	os.path.join(Extension.sm_root, 'public', 'libudis86', 'syn-intel.c'),
-	os.path.join(Extension.sm_root, 'public', 'libudis86', 'syn.c'),
-	os.path.join(Extension.sm_root, 'public', 'libudis86', 'udis86.c')
+  os.path.join(Extension.sm_root, 'public', 'libudis86', 'decode.c'),
+  os.path.join(Extension.sm_root, 'public', 'libudis86', 'itab.c'),
+  os.path.join(Extension.sm_root, 'public', 'libudis86', 'syn-att.c'),
+  os.path.join(Extension.sm_root, 'public', 'libudis86', 'syn-intel.c'),
+  os.path.join(Extension.sm_root, 'public', 'libudis86', 'syn.c'),
+  os.path.join(Extension.sm_root, 'public', 'libudis86', 'udis86.c')
 ]
 
 detour_games = ['l4d', 'l4d2', 'nucleardawn']
