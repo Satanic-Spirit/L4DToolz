@@ -150,11 +150,11 @@ class ExtensionConfig(object):
       '-pipe',
       '-fno-strict-aliasing',
       '-Wall',
-      '-Werror',
+	  '-Werror',
       '-Wno-unused',
       '-Wno-switch',
       '-Wno-array-bounds',
-      '-msse',
+	  '-msse',
       '-m32',
       '-fvisibility=hidden',
     ]
@@ -242,6 +242,7 @@ class ExtensionConfig(object):
 
   def configure_linux(self, cxx):
     cxx.defines += ['_LINUX', 'POSIX']
+    #cxx.linkflags += ['-Wl,--exclude-libs,ALL', '-lm']
     if cxx.vendor == 'gcc':
       cxx.linkflags += ['-static-libgcc']
     elif cxx.vendor == 'clang':
@@ -288,6 +289,7 @@ class ExtensionConfig(object):
 
     defines = ['SE_' + PossibleSDKs[i].define + '=' + PossibleSDKs[i].code for i in PossibleSDKs]
     compiler.defines += defines
+    compiler.defines += ['HAVE_STRING_H'];
 
     paths = [
       ['public'],
